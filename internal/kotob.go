@@ -1,9 +1,8 @@
 package internal
 
 import (
+    "github.com/gin-gonic/gin"
 	"kotob_server/internal/handler"
-
-	"github.com/gin-gonic/gin"
 )
 
 func KotobRouter() {
