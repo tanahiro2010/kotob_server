@@ -2,7 +2,6 @@ package handler
 
 import (
 	"os"
-
 	"github.com/gin-gonic/gin"
 )
 
