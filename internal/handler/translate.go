@@ -11,7 +11,7 @@ func Translate(ctx *gin.Context) {
 	content := ctx.PostForm("text")
 	model := ctx.PostForm("model")
 	src := ctx.PostForm("from")
-	dst := ctx.PostForm("dst")
+	dst := ctx.PostForm("to")
 
 	if content == "" {
 		ctx.JSON(400, gin.H{"error": "Content is required"})
