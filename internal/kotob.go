@@ -1,21 +1,28 @@
 package internal
 
 import (
-	"github.com/gin-gonic/gin"
 	"kotob_server/internal/handler"
 	"os"
+
+	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 func KotobRouter() {
+	err := godotenv.Load()
+	if err != nil {
+		println("No .env file found, relying on environment variables")
+	}
+
 	client := gin.Default()
 	client.Use(handler.Middleware)
 	client.GET("/translate", handler.Translate)
-
 	port := ":8080"
-	if os.ExpandEnv("KOTOB_PORT") != "" {
-		port = os.ExpandEnv("KOTOB_PORT")
+	if os.Getenv("KOTOB_PORT") != "" {
+		port = os.Getenv("KOTOB_PORT")
 	}
-	err := client.Run(port)
+	println("Server is running on port", port)
+	err = client.Run(port)
 	if err != nil {
 		return
 	}
