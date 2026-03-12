@@ -8,10 +8,11 @@ import (
 )
 
 func Translate(ctx *gin.Context) {
-	content := ctx.Query("content")
-	model := ctx.Query("model")
-	src := ctx.Query("src")
-	dst := ctx.Query("dst")
+	content := ctx.PostForm("content")
+	model := ctx.PostForm("model")
+	src := ctx.PostForm("src")
+	dst := ctx.PostForm("dst")
+
 	if content == "" {
 		ctx.JSON(400, gin.H{"error": "Content is required"})
 	}
