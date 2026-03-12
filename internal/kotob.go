@@ -16,7 +16,7 @@ func KotobRouter() {
 
 	client := gin.Default()
 	client.Use(handler.Middleware)
-	client.GET("/translate", handler.Translate)
+	client.POST("/api/translate", handler.Translate)
 	port := ":8080"
 	if os.Getenv("KOTOB_PORT") != "" {
 		port = os.Getenv("KOTOB_PORT")
