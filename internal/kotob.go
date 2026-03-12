@@ -1,8 +1,9 @@
 package internal
 
 import (
-    "github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin"
 	"kotob_server/internal/handler"
+	"os"
 )
 
 func KotobRouter() {
@@ -10,10 +11,10 @@ func KotobRouter() {
 	client.Use(handler.Middleware)
 	client.GET("/translate", handler.Translate)
 
-    port := ":8080"
-    if os.ExpandEnv("KOTOB_PORT") != "" {
-        port = os.ExpandEnv("KOTOB_PORT")
-    }
+	port := ":8080"
+	if os.ExpandEnv("KOTOB_PORT") != "" {
+		port = os.ExpandEnv("KOTOB_PORT")
+	}
 	err := client.Run(port)
 	if err != nil {
 		return
