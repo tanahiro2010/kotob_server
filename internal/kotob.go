@@ -11,7 +11,11 @@ func KotobRouter() {
 	client.Use(handler.Middleware)
 	client.GET("/translate", handler.Translate)
 
-	err := client.Run(":8080")
+    port := ":8080"
+    if os.ExpandEnv("KOTOB_PORT") != "" {
+        port = os.ExpandEnv("KOTOB_PORT")
+    }
+	err := client.Run(port)
 	if err != nil {
 		return
 	}
