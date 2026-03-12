@@ -8,7 +8,7 @@ import (
 )
 
 func Translate(ctx *gin.Context) {
-	content := ctx.PostForm("content")
+	content := ctx.PostForm("text")
 	model := ctx.PostForm("model")
 	src := ctx.PostForm("src")
 	dst := ctx.PostForm("dst")
